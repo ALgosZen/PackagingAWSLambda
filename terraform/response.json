@@ -1,1 +1,1 @@
-{"statusCode":200,"headers":{"Content-Type":"application/json"},"body":"{\"message\":\"Hello, Vito Carleone!\"}"}
+{"errorType":"Error","errorMessage":"Error getting object hello.json from bucket test-literate-silkworm.","trace":["Error: Error getting object hello.json from bucket test-literate-silkworm.","    at Runtime.exports.handler (/var/task/function.js:24:15)","    at processTicksAndRejections (node:internal/process/task_queues:96:5)"]}

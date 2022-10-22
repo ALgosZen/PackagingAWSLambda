@@ -2,14 +2,14 @@ resource "random_pet" "test_bucket_name" {
   prefix = "test"
   length = 2
 }
-resource "random_id" "lambda_bucket_id" {
+resource "random_id" "test_bucket_id" {
   prefix = "lambda"
   byte_length = 12
 }
 
-resource "aws_s3_bucket" "lambda_bucket" {
+resource "aws_s3_bucket" "test" {
   
-  bucket        = lower(random_id.lambda_bucket_id.id)
+  bucket        = lower(random_id.test_bucket_id.id)
   force_destroy = true
 }
 

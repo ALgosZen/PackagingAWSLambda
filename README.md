@@ -43,8 +43,8 @@ steps involved
 ### test the HTTP GET (make sure to replace id with the API ID)
 ```
 - curl "https://<id>.execute-api.us-west-1.amazonaws.com/dev/hello?Name=Vito%20Croleone"
+note: %20 represents a space in URL - as space is assigned number 32 which is 20 in hexadecimal
 ```
-- %20 represents a space in URL - as space is assigned number 32 which is 20 in hexadecimal
 
 ### test the POST method (using curl or postman) - 
 ### (make sure to replace id with the API ID)
@@ -65,19 +65,29 @@ How to move dependencies into AWS lambda environment?
 Lets consider an eg:
 Reading a new file in an S3 bucket using aws sdk libs
 steps involved:
-- 1.create a node project and add external dependencies 
+- 1.create a node project and add external dependencies (npm init)
 - 2. grant access to this function to read a file in a new S3 bucket
 - 3. create lambda funtion using terraform - s3-lambda.tf
 - 4. simple wrapper around terraform to deploy from local
 - 5. make the script executable - chmod +x terraform.sh
-- 6. finally run the script - ./terraform.sh
+- 6. finally run the script - ./terraform.sh to test from local
 - 7. invoke this new s3 function and provide a json payload with the bucket name and the object
+
+
+Test running terraform apply and check the outputs.
 ```
- aws lambda invoke \ --region=us-east-1 \ --function-name=s3 \
+hello_base_url = "https://<id>.execute-api.us-west-1.amazonaws.com/dev"
+test_s3_bucket = "<bucket-name>"
+```
+TEST invoking  lambda using AWS CLI
+
+```
+ aws lambda invoke --region=us-west-1  --function-name=s3 \
  --cli-binary-format raw-in-base64-out \
  --payload '{"bucket":"test-<your>-<name>","object":"hello.json"}' \
  response.json
 ```
+'{"bucket":"test-literate-silkworm","object":"hello.json"}'
 
 
 

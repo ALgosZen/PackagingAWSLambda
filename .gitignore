@@ -1,3 +1,8 @@
+# all node modules recursive
+**/node_modules
+# this is the new method, should work hopefully
+node_modules
+
 # Local .terraform directories
 **/.terraform/*
 
