@@ -43,11 +43,12 @@ steps involved
 ### test the POST method (using curl or postman) - 
 ### (make sure to replace id with the API ID)
 
+```
 -curl -X POST \
 -H "Content-Type: application/json" \
 -d '{"name":"Vito Corleone"}' \
 "https://<id>.execute-api.us-west-1.amazonaws.com/dev/hello"
-
+```
 
 ### log into AWS console and verify 
 - 1. s3 bucket
@@ -65,11 +66,12 @@ steps involved:
 - 5. make the script executable - chmod +x terraform.sh
 - 6. finally run the script - ./terraform.sh
 - 7. invoke this new s3 function and provide a json payload with the bucket name and the object
-#### aws lambda invoke \ --region=us-east-1 \ --function-name=s3 \
-#### --cli-binary-format raw-in-base64-out \
-#### --payload '{"bucket":"test-<your>-<name>","object":"hello.json"}' \
-#### response.json
-
+```
+ aws lambda invoke \ --region=us-east-1 \ --function-name=s3 \
+ --cli-binary-format raw-in-base64-out \
+ --payload '{"bucket":"test-<your>-<name>","object":"hello.json"}' \
+ response.json
+```
 
 
 
