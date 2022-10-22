@@ -49,5 +49,27 @@ steps involved
 "https://<id>.execute-api.us-west-1.amazonaws.com/dev/hello"
 
 
+### log into AWS console and verify 
+- 1. s3 bucket
+- 2. api gateway and routes GET and POST
+- 3. cloudwatch logs
+-------------------------------------------------------------
+How to move dependencies into AWS lambda environment?
+Lets consider an eg:
+Reading a new file in an S3 bucket using aws sdk libs
+steps involved:
+- 1.create a node project and add external dependencies 
+- 2. grant access to this function to read a file in a new S3 bucket
+- 3. create lambda funtion using terraform - s3-lambda.tf
+- 4. simple wrapper around terraform to deploy from local
+- 5. make the script executable - chmod +x terraform.sh
+- 6. finally run the script - ./terraform.sh
+- 7. invoke this new s3 function and provide a json payload with the bucket name and the object
+#### aws lambda invoke \ --region=us-east-1 \ --function-name=s3 \
+#### --cli-binary-format raw-in-base64-out \
+#### --payload '{"bucket":"test-<your>-<name>","object":"hello.json"}' \
+#### response.json
+
+
 
 
