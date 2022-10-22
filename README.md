@@ -17,13 +17,17 @@ steps involved
 - terraform destroy (run destroy when you are ready to clean up resources)
 
 # invoke lambda from cli
+```
 - aws lambda invoke --region=us-west-1 --function-name=hello response.json
+```
 # verify response 
 - cat response.json
 # now modify the function.js and run terraform apply to retrigger the deployment . sequence of commands 
+```
 - terraform apply
 - aws lambda invoke --region=us-west-1 --function-name=hello response.json
 - cat response.json
+```
 
 # now create api gateway version 2. using terraform. AWS API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
 #### 3-api-gateway.tf
@@ -37,7 +41,9 @@ steps involved
 #### run terraform appy 
 
 ### test the HTTP GET (make sure to replace id with the API ID)
+```
 - curl "https://<id>.execute-api.us-west-1.amazonaws.com/dev/hello?Name=Vito%20Croleone"
+```
 - %20 represents a space in URL - as space is assigned number 32 which is 20 in hexadecimal
 
 ### test the POST method (using curl or postman) - 
